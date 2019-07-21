@@ -206,7 +206,22 @@ header h1 {
     transition: .4s ease-out;
     outline: none;
   }
-  
+  button {
+    font-size: 1.15em;
+    font-weight: bold;
+    display: block;
+    padding: 1em;
+    color: #074473;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin: auto;
+    outline: 0;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15)
+  }
+  button:hover {
+    cursor: pointer;
+  }
 
 /* ===================================== 
    Media Queries
