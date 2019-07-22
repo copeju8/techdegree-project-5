@@ -44,6 +44,9 @@ function generateData(data) {                                    //Generate the 
 function generateModal(data) {      //Generate the markup for each employee profile
     //Sets the markup to the HTML defined in the template literal using passed in data
     //let formatDOB = str.reverse
+
+    dob = dob.slice(5, 7) + '/' + dob.slice(8, 10) + '/' + dob.slice(0.4);
+
     data.results.map(person => {
         const modalHtml = `
     
@@ -58,7 +61,7 @@ function generateModal(data) {      //Generate the markup for each employee prof
                 <hr>
                 <p class="modal-text">${person.cell}</p>
                 <p class="modal-text">${person.location.street}+','+ ${person.location.city} +','+ ${person.location.state} ${person.location.postcode}</p>
-                <p class="modal-text">Birthday: ${person.dob.date}</p> 
+                <p class="modal-text">Birthday: ${person.dob}</p> 
             </div>
         </div> `;
 
