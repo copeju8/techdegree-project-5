@@ -46,6 +46,7 @@ function generateModal(data) {      //Generate the markup for each employee prof
     //let formatDOB = str.reverse
     data.results.map(person => {
         const modalHtml = `
+    
         <div class="modal-container">
         <div class="modal">
             <button type="button" id="modal-close-btn" class="modal-close-btn"><strong></strong></button>
@@ -60,9 +61,9 @@ function generateModal(data) {      //Generate the markup for each employee prof
                 <p class="modal-text">Birthday: ${person.dob.date}</p> 
             </div>
         </div> `;
-    })
 
-    $('#gallery').append(modalHtml);
+        $('body').append(modalHtml);
+    })
 };
 // function checkStatus() {
 //     if(response.ok) {
@@ -75,10 +76,14 @@ function generateModal(data) {      //Generate the markup for each employee prof
 
 // //Event Listeners
 
-// $('#gallery').on('click', () => {
-//     generateModal();
-//     console.log('hello');
-// });
+$(".modal-close-btn").on('click', function () {
+    $("#modal-container").remove();
+});
+
+$('#gallery').on('click', '.card', function (event) {
+    i = ($(this).index());
+    generateModal(i); console.log('hello');
+});
 
 
 
@@ -91,10 +96,10 @@ function generateModal(data) {      //Generate the markup for each employee prof
 
 
 // $("modal-close-btn").on('click', function () {
-        //     $("modal-container").remove();
-        // });
+//     $("modal-container").remove();
+// });
 
-        // $('#gallery').on('click', '.card', function () {
-        //     i = ($(this).index());
-        //     generateModal(i);
-        // });
+// $('#gallery').on('click', '.card', function () {
+//     i = ($(this).index());
+//     generateModal(i);
+// });
