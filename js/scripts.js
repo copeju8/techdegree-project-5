@@ -12,7 +12,7 @@ const url = ('https://randomuser.me/api/?results=12&nat=US');   //Futue option f
 const card = document.getElementById('.card');           //Retrieves all employee data     
 const pictures = document.getElementById('.card-img');            //Retrieves employee pictures (images)
 const info = document.querySelector(".card-info-container");    //Retrieves employee information
-const btn = document.querySelector('button');                   
+const btn = document.createElement('button');                   
 
 /*Fetch Functions*/
     
@@ -21,29 +21,10 @@ const btn = document.querySelector('button');
     .then(data => generateData(data))                           //Getting actual JSON data                                                        
     //.catch(error => console.log(" Something went wrong! Re-enter your request!"))                
 
-// function generateInfo (data) {                               //Generate the markup for each employee profile
-//     for (let i = 0; i < usersList.length; i++) {             //Sets the markup to the HTML defined in the template literal using passed in data
-//     let card = `
-//         <div class="card-img-container">
-//             <img class ="card-img" src=${person.picture.large} alt="profile picture">
-//         </div>
-        
-//         <div class="card-info-container">
-//             <h3 id="name" class="card-name cap">${person.name.first} ${person.name.last}</h3>
-//             <p class="card-text">${person.email}<p>
-//             <p class="card-text cap">${person.location.city}<p>
-//         </div>  
-//         `;
-
-//         $('.gallery').append(card);    
-//     }
-// }        
-
-
-
 // /*Helper Functions*/
 
-function generateData(data)    {
+function generateData(data)    {                                    //Generate the markup for each employee profile
+                                                                    //Sets the markup to the HTML defined in the template literal using passed in data
     const html = data.results.map( person => `
 
         <div class="card-img-container">
@@ -60,8 +41,29 @@ function generateData(data)    {
  $('.gallery').append(html);    
 }
 
+function generateModal(data)    {                                    //Generate the markup for each employee profile
+                                                                    //Sets the markup to the HTML defined in the template literal using passed in data
+     //let formatDOB = str.reverse
+     const modalHtml = data.results.map( person => `
 
+    <div class="modal-container">
+    <div class="modal">
+        <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>${person.btn}</strong></button>
+        <div class="modal-info-container">
+            <img class="modal-img" src=${person.picture.large} alt="profile picture"> 
+            <h3 id="name" class="modal-name cap">${person.name.first} ${person.name.last}</h3>
+            <p class="modal-text">${person.email}</p>
+            <p class="modal-text cap">${person.location.city}</p>
+            <hr>
+            <p class="modal-text">${person.cell}</p>
+            <p class="modal-text">${person.location.street}+','+ ${person.location.city} +','+ ${person.location.state} ${person.location.postcode}</p>
+            <p class="modal-text">Birthday: ${person.dob.date}</p> 
+        </div>
+    </div>
+        `) .join ('')
 
+$('.modal-container').append(modalHtml);    
+}
 
 
 // function checkStatus() {
@@ -74,6 +76,7 @@ function generateData(data)    {
 
 
 // //Event Listeners
+card.addEventListener('click', generateModal);
 
 
 
