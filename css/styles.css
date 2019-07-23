@@ -79,7 +79,7 @@ header h1 {
 }
   
 .card {
-    display: flex;
+    display: table;                 
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
@@ -193,7 +193,6 @@ header h1 {
     border-radius: 0.25em;
     border: 1px solid rgba(100, 100, 100, 0.3);
 }
-
 
 .modal-btn-container .btn {
     display: inline-block;
