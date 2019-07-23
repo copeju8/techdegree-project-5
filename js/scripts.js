@@ -109,12 +109,12 @@ function generateModal(person) { //Generate card profiles using the employee(per
 
     $('body').append(modalHtml);
 
-    $('#modal-close-btn').on('click', function () {
-        $('.modal-container').remove();
-        console.log('hello');
-    });
-};
 
+};
+$('#modal-close-btn').on('click', function () {
+    $('.modal-container').remove();
+    console.log('hello');
+});
 
 // //Post Data
 
