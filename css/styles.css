@@ -88,11 +88,7 @@ header h1 {
     max-width: 360px;
     margin: 10px 10px 20px;
     padding: 10px;
-<<<<<<< HEAD
-    background: rgba(115, 206, 122, 0.9);
-=======
     background: rgba(126, 161, 123, 0.9);
->>>>>>> 395c8fb89337cc206e72cffb76213b5a5cbc2e07
     border-radius: 0.25em;
     border: 5px solid rgba(65, 60, 60, 0.3);
     transition: .4s ease-out;
