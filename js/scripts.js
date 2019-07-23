@@ -12,7 +12,6 @@ const url = ('https://randomuser.me/api/?results=12&nat=US');   //Futue option f
 const card = document.getElementById('.card');           //Retrieves all employee data     
 const pictures = document.getElementById('.card-img');            //Retrieves employee pictures (images)
 const info = document.querySelector(".card-info-container");    //Retrieves employee information
-const btn = document.createElement('button');                   
 
 /*Fetch Functions*/
     
@@ -48,7 +47,7 @@ function generateModal(data)    {                                    //Generate 
 
     <div class="modal-container">
     <div class="modal">
-        <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>${person.btn}</strong></button>
+        <button type="button" id="modal-close-btn" class="modal-close-btn" data-toggle="modal" data-target="#myModal"><strong>Open Modal</strong></button>
         <div class="modal-info-container">
             <img class="modal-img" src=${person.picture.large} alt="profile picture"> 
             <h3 id="name" class="modal-name cap">${person.name.first} ${person.name.last}</h3>
@@ -76,8 +75,12 @@ $('.modal-container').append(modalHtml);
 
 
 // //Event Listeners
-card.addEventListener('click', generateModal);
+const modal = document.getElementById('#myModal');
+const btn = document.getElementById('my#Btn');
 
+btn.onclick = function()   {
+    modal.style.display = "block";
+}
 
 
 // //Post Data
