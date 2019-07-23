@@ -108,15 +108,12 @@ function generateModal(person) { //Generate card profiles using the employee(per
             </div>`
 
     $('body').append(modalHtml);
-
-
 };
 $('#modal-close-btn').on('click', function () {
     $('.modal-container').remove();
     console.log('hello');
 });
 
-// //Post Data
 
 // /*Result:
 // Ability to request a JSON object from the API and parse the data so that 12 employees are listed in the
