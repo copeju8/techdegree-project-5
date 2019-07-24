@@ -69,13 +69,6 @@ function generateData(data) {
         $('#gallery').append(card);
 
 
-        // console.log("i  ", i);
-        // $('#gallery').on('click', '.card', function (event) {   //Event listener for click event (works here)
-        //     storeData[i].profile.show();
-
-        // })
-
-
     }
 }
 console.log($('#gallery .card'));
@@ -129,12 +122,8 @@ function showModalFunc(i, jsonData) {
     // $('body').append(profile);
     // document.getElementsByTagName('body').appendChild(profile);
 
-
+    $("#modal-close-btn").on('click', () => {
+        $(".modal-container").remove();
+    })
 
 }
-
-
-
-
-
-
