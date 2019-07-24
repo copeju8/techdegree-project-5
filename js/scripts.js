@@ -29,31 +29,20 @@ fetch(url)
     Sets the markup to the HTML defined in the template literal using passed in data
     A card profile is generated for each random employee */
 
-// Current target --> inner text --> regex (grab first/last name) and assign into a variable
-// for 0 - 12, check if variable equals data.results[i].name.first + ' ' + data.results[i].name.last
-
 function generateData(data) {
 
     jsonData = data.results;
-    console.log(data.results);
 
+    //Create for loop to store and create card profiles while iterating through the Json array. 
     let storeData = [];
 
-
-    //jsonData.forEach(person => {
     for (var i = 0; i < data.results.length; i++) {
 
-
-        // const picture = person.picture.large;
-        // const firstName = person.name.first;
-        // const email = person.email;
-        // const locCity = person.location.city;
-        // const locState = person.location.state;
-
-        let card = document.createElement('div');               //Create div class for individual employee (person) info
+        let card = document.createElement('div');      //Create div class for individual employee (person) info
         card.classList.add('card');
 
-        card.innerHTML = `
+        //Create a template literal to capture the data using interpolation.
+        card.innerHTML = `                             
             <div class="card-img-container">
                 <img class ="card-img" src=${jsonData[i].picture.large} alt="profile picture">
             </div>
@@ -65,13 +54,12 @@ function generateData(data) {
             </div>    
             `;
 
-
-        $('#gallery').append(card);
-
-
+        $('#gallery').append(card);                     //Append all 12 random employee cards to the gallery
     }
 }
-console.log($('#gallery .card'));
+//Created event listener to trigger request for currentTarget
+//Targeting child of each parent node per each click & use
+//Call showModalFunc to show indexed(requested card) with Json Data
 
 $('#gallery').on('click', '.card', (e) => {
     var parent = e.currentTarget.parentNode;
@@ -83,21 +71,12 @@ $('#gallery').on('click', '.card', (e) => {
 
 function showModalFunc(i, jsonData) {
 
-    console.log('showModalFunc load');
-    console.log(jsonData[i]);
-
-
-    let dob = jsonData[i].dob.date;
+    let dob = jsonData[i].dob.date;                                         //Slice string to get date of birth correct format
     let bDay = dob.slice(5, 7) + '/' + dob.slice(8, 10) + '/' + dob.slice(0, 4);
 
-
-    //Create div class for individual employee (person) info
-    // profile.classList.add('card');
-    //const modalHtml = `
-    // profile.innerHtml =
     $("body").append(
         `<div class="modal-container" >
-            <div class="modal">
+            <div class="modal">dat
                 <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                 <div class="card-img-container">
                     <img class="card-img" src=${jsonData[i].picture.large} alt="profile picture">
@@ -107,7 +86,7 @@ function showModalFunc(i, jsonData) {
                     <p class="modal-text cap">${jsonData[i].location.city}</p>
                     <hr>
                         <p class="modal-text">${jsonData[i].cell}</p>
-                        <p class="modal-text">${jsonData[i].location.street}, ${jsonData[i].location.city}, ${jsonData[i].location.state} ${jsonData[i].location.postcode}</p>
+                        <p class="modal-text cap">${jsonData[i].location.street}, ${jsonData[i].location.city}, ${jsonData[i].location.state} ${jsonData[i].location.postcode}</p>
                         <p class="modal-text">Birthday: ${bDay}</p>
             </div>
          
@@ -119,9 +98,7 @@ function showModalFunc(i, jsonData) {
         </div >
                 `);
 
-    // $('body').append(profile);
-    // document.getElementsByTagName('body').appendChild(profile);
-
+    //Event listener closes modal window
     $("#modal-close-btn").on('click', () => {
         $(".modal-container").remove();
     })
