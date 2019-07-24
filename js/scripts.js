@@ -76,7 +76,7 @@ function showModalFunc(i, jsonData) {
 
     $("body").append(
         `<div class="modal-container" >
-            <div class="modal">dat
+            <div class="modal">
                 <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                 <div class="card-img-container">
                     <img class="card-img" src=${jsonData[i].picture.large} alt="profile picture">
